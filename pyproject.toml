@@ -1,0 +1,47 @@
+[project]
+name = "ariax"
+version = "0.1.0"
+description = "Aria2 GUI 下载器 - 支持tkinter和DearPyGui的现代化图形界面下载工具"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "requests>=2.31.0",
+    "websocket-client>=1.6.0",
+    "psutil>=5.9.0",
+    "aria2p>=0.12.1",
+    "ttkbootstrap>=1.14.2",
+    "appdirs>=1.4.4",
+    "platformdirs>=4.4.0",
+]
+
+[project.scripts]
+ariax = "app:main"
+ariax-dpg = "app_dpg:main"
+ariax-bootstrap = "app_bootstrap:main"
+aria2ctl = "aria2ctl:main"
+aria2config = "config_gui:main"
+aria2config-dpg = "config_dpg:main"
+aria2config-bootstrap = "config_gui_bootstrap:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+include = [
+    "app.py",
+    "app_dpg.py",
+    "run.py",
+    "aria2ctl.py",
+    "config_gui.py",
+    "config_dpg.py",
+    "README.md",
+    "aria2.conf.example",
+    "components/*.py",
+    "services/*.py",
+    "ui/*.py"
+]
+
+[tool.uv]
+dev-dependencies = []
